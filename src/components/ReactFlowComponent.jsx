@@ -4,7 +4,8 @@ import {
   Background,
   applyEdgeChanges,
   applyNodeChanges,
-  addEdge
+  addEdge,
+  BackgroundVariant
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useCallback, useState } from 'react'
@@ -55,7 +56,7 @@ const ReactFlowComponent = () => {
         onConnect={onConnect}
         fitView
       >
-        <Background />
+        <Background color='#ccc' variant={BackgroundVariant.Dots}/>
         <Controls />
       </ReactFlow>
     </div>
