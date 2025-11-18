@@ -5,10 +5,13 @@ import {
   applyEdgeChanges,
   applyNodeChanges,
   addEdge,
-  BackgroundVariant
+  BackgroundVariant,
+  MiniMap
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useCallback, useState } from 'react'
+import TextUpdateNode from './TextUpdateNode'
+import NumberUpdateNode from './NumberUpdateNode'
 
 // Creating Initial Nodes
 const initialNodes = [
@@ -16,17 +19,19 @@ const initialNodes = [
     id: 'n1',
     data: { label: 'Node 1' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'textUpdater'
+    
   },
   {
     id: 'n2',
     data: { label: 'Node 2' },
-    position: { x: 100, y: 100 }
+    position: { x: 100, y: 100 },
+    type: 'numberUpdater'
   }
 ]
 
 // Creating edges
-const initialEdges = [];
+const initialEdges = []
 
 const ReactFlowComponent = () => {
   const [nodes, setNodes] = useState(initialNodes)
@@ -46,17 +51,26 @@ const ReactFlowComponent = () => {
     []
   )
 
+  // Adding Custom NodeTypes to include the custom node component
+  const nodeTypes = {
+    textUpdater: TextUpdateNode,
+    numberUpdater: NumberUpdateNode
+  }
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
       >
-        <Background color='#ccc' variant={BackgroundVariant.Dots}/>
+        <Background color='#ccc' variant={BackgroundVariant.Dots} />
+
+        <MiniMap nodeStrokeWidth={3} />
         <Controls />
       </ReactFlow>
     </div>
