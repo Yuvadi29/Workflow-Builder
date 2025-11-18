@@ -8,7 +8,7 @@ import {
   useNodesState
 } from '@xyflow/react'
 import React from 'react'
-import { nodeTypes } from './components/nodes/nodeTypes'
+import { nodeTypes } from './nodeTypes'
 
 const WorkflowEditor = () => {
   // Variable Initialisation

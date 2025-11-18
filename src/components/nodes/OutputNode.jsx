@@ -4,18 +4,16 @@ const style = {
   padding: 10,
   borderRadius: 8,
   border: '1px solid #777',
-  background: '#083344',
+  background: '#243b3b',
   color: '#e6eef8',
   minWidth: 180
 }
 
-const StartNode = ({ data }) => {
+export default function OutputNode ({ data }) {
   return (
     <div style={style}>
-      <strong>Start</strong>
-      <div style={{ fontSize: 12, marginTop: 6 }}>{data?.label || 'Begin'}</div>
+      <strong>Output</strong>
+      <div style={{ fontSize: 12, marginTop: 6 }}>{data?.format || 'raw'}</div>
     </div>
   )
 }
-
-export default StartNode

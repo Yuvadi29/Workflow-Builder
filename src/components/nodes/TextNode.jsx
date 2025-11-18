@@ -4,18 +4,18 @@ const style = {
   padding: 10,
   borderRadius: 8,
   border: '1px solid #777',
-  background: '#083344',
+  background: '#0f172a',
   color: '#e6eef8',
   minWidth: 180
 }
 
-const StartNode = ({ data }) => {
+const TextNode = ({ data }) => {
   return (
     <div style={style}>
-      <strong>Start</strong>
-      <div style={{ fontSize: 12, marginTop: 6 }}>{data?.label || 'Begin'}</div>
+      <strong>Text</strong>
+      <div style={{ fontSize: 12, marginTop: 6 }}>{data?.label || '(no text)'}</div>
     </div>
   )
 }
 
-export default StartNode
+export default TextNode
