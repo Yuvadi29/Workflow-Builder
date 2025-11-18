@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactFlow from './components/ReactFlowComponent'
+import WorkflowEditor from './WorkflowEditor'
 
 const App = () => {
   return (
@@ -7,7 +8,8 @@ const App = () => {
       <h1 style={{ fontFamily: 'system-ui' }}>
         Workflow Builder using React Flow
       </h1>
-      <ReactFlow />
+      {/* <ReactFlow /> */}
+      <WorkflowEditor />
     </div>
   )
 }
