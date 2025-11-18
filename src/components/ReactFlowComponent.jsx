@@ -3,7 +3,8 @@ import {
   Controls,
   Background,
   applyEdgeChanges,
-  applyNodeChanges
+  applyNodeChanges,
+  addEdge
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { useCallback, useState } from 'react'
@@ -24,15 +25,7 @@ const initialNodes = [
 ]
 
 // Creating edges
-const initialEdges = [
-  {
-    id: 'n1-n2', //Id should be usually given to connect from which node to which node
-    source: 'n1', //source node
-    target: 'n2', //destination node,
-    type: 'step',
-    label: 'connects with'
-  }
-]
+const initialEdges = [];
 
 const ReactFlowComponent = () => {
   const [nodes, setNodes] = useState(initialNodes)
@@ -47,6 +40,11 @@ const ReactFlowComponent = () => {
     setEdges(edgeSnapshot => applyEdgeChanges(changes, edgeSnapshot), [])
   )
 
+  const onConnect = useCallback(
+    params => setEdges(edgesSnapshot => addEdge(params, edgesSnapshot)),
+    []
+  )
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <ReactFlow
@@ -54,6 +52,7 @@ const ReactFlowComponent = () => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
         fitView
       >
         <Background />
